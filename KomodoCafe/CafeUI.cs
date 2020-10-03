@@ -5,14 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace KomodoCafeUnitTest
+namespace KomodoCafe
 {
    public class CafeUI
     {
         MenuRepo _menuRepo = new MenuRepo();
         public void Run()
         {
-
+            Menu();
+        }
+        public void Menu()
+        { 
             bool keepRunning = true;
             while (keepRunning)
             {
@@ -70,11 +73,15 @@ namespace KomodoCafeUnitTest
             newItem.MealDescription = Console.ReadLine();
 
             Console.WriteLine("Please enter meal ingredients");
-            newItem.Ingredietns = Console.ReadLine();
+            newItem.Ingredients = Console.ReadLine();
 
-            Console.WriteLine("Please enter meal cost as a decimal");
+            Console.WriteLine("Please enter meal cost");
             string costAsString = Console.ReadLine();
             newItem.Price = int.Parse(costAsString);
+
+             _menuRepo.CreateNewMenuItem(newItem);
+
+
         }
         private void DeleteMenuItem()
         {
@@ -91,17 +98,17 @@ namespace KomodoCafeUnitTest
             {
                 Console.WriteLine("Item not found, try again");
             }
-
+            
         }
         private void ViewAllItems()
         {
-            Console.WriteLine("Listing all Menu Items:\n\n\n");
+            Console.WriteLine("Listing all Menu Items:\n");
 
             List<CafeMenu> AllItems = _menuRepo.GetCafeMenu();
 
             foreach(var item in AllItems)
             {
-                Console.WriteLine(item);
+                Console.WriteLine(item.MealName);
             }
         }
     }

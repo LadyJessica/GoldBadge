@@ -29,8 +29,40 @@ namespace GoldBadgeFinal
 
             Assert.IsNotNull(actual);
         }
+        public void AddDoorToBadge_Test()
+        {
+            //arrange
+            Badge actual;
+            string addDoorName = "A5";
+            int badgeID = 1234;
+            //act
 
-        
+            _badgeRepo.AddDoorToBadge(addDoorName, badgeID);
+            actual = _badgeRepo.GetBadgeByID(badgeID);
+
+            //assert
+
+            Assert.IsNotNull(actual); 
+
+        }
+
+        //public void BadgeLists_Test()
+        //{
+        //    //arrange
+        //    Badge actual;
+        //    string addDoorName = "A5";
+        //    int badgeID = 1234;
+        //    //act
+
+        //    _badgeRepo.AddDoorToBadge(addDoorName, badgeID);
+        //    actual = _badgeRepo.DeleteRoomsOnBadge(badgeID);
+
+        //    //assert
+
+        //    Assert.IsTrue(true);
+
+        //}
+
 
     }
 }
